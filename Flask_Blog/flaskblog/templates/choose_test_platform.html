@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Choose Test Platform</legend>
+                <div class="row">
+                  <div class="col-md-3 mb-3">
+                    <label >Test Environment</label>
+                    {{ form.test_environment(class="custom-select d-block w-100") }}
+                    <div class="invalid-feedback">
+                      Please select a valid environment.
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label >Jurisdiction</label>
+                    {{ form.jurisdiction(class="custom-select d-block w-100") }}
+                    <div class="invalid-feedback">
+                      Please select a valid environment.
+                    </div>
+                  </div>
+                    <div class="col-md-4 mb-3">
+                    {{ form.release_name.label(class="form-control-label") }}
+                    {% if form.release_name.errors %}
+                        {{ form.release_name(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.release_name.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.release_name(class="form-control") }}
+                    {% endif %}
+                  </div>
+
+                </div>
+                <div class="custom-control custom-checkbox">
+                    {{ form.chrome_checkbox(class="custom-control-input") }}
+                    {{ form.chrome_checkbox.label(class="custom-control-label") }}
+                </div>
+                <div class="custom-control custom-checkbox">
+                    {{ form.firefox_checkbox(class="custom-control-input") }}
+                    {{ form.firefox_checkbox.label(class="custom-control-label") }}
+                </div>
+                <div class="custom-control custom-checkbox">
+                    {{ form.edge_checkbox(class="custom-control-input") }}
+                    {{ form.edge_checkbox.label(class="custom-control-label") }}
+                </div>
+                <div class="custom-control custom-checkbox">
+                    {{ form.ie_checkbox(class="custom-control-input") }}
+                    {{ form.ie_checkbox.label(class="custom-control-label") }}
+                </div>                
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+{% endblock content %}

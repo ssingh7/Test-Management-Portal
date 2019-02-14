@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <div class="container">
+            <table class="table table-bordered">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Test Name</th>
+                  <th scope="col">Test Status</th>
+                  <th scope="col">Execution Time</th>
+                </tr>
+              </thead>
+              <tbody>
+            {% for data in dataList %}
+                    <tr>
+                      <th scope="row">{{loop.index}}</th>
+                      <td>{{data['Name']}}</td>
+                      <td>{{data['Status']}}</td>
+                      <td>{{loop.index}} Seconds</td>
+                    </tr>
+            {% endfor %}
+              </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock content %}
